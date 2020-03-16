@@ -1,6 +1,7 @@
 package com.miage.altea.game_ui.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -13,6 +14,12 @@ import java.util.List;
 
 @Configuration
 public class RestConfiguration {
+
+    @Value("${trainer.service.password}")
+    String password;
+
+    @Value("${trainer.service.username}")
+    String userName;
 
     @Bean
     public RestTemplate restTemplate(){
@@ -31,7 +38,7 @@ public class RestConfiguration {
     @Bean
     RestTemplate trainerApiRestTemplate() {
         RestTemplate r = this.restTemplate();
-        r.setInterceptors(List.of(new BasicAuthenticationInterceptor("${username}","${password}")));
+        r.setInterceptors(List.of(new BasicAuthenticationInterceptor(userName,password)));
         return r;
     }
 

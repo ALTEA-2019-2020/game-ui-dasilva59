@@ -4,6 +4,7 @@ import com.miage.altea.game_ui.trainers.bo.Trainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -32,8 +33,11 @@ public class TrainerServiceImpl implements TrainerService {
 
     @Override
     public List<Trainer> listTrainer() {
-        return Arrays.asList(restTemplate.getForObject(
+        Trainer t= (Trainer) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<Trainer> trainers=Arrays.asList(restTemplate.getForObject(
                 this.url+"/trainers/", Trainer[].class));
+        trainers.remove(t);
+        return trainers;
     }
 
     @Override
