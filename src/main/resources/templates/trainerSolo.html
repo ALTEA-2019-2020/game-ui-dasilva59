@@ -1,4 +1,4 @@
-{{> layout/header}}
+{{> layout/navbar}}
 
 <body>
 
@@ -13,12 +13,17 @@
                     <h4 class="my-0 font-weight-normal">{{name}}
                     </h4>
                 </div>
-                {{#team}}
+                {{#teamType}}
                 <div class="card-body">
-                    <span class="badge badge-primary">Id : {{pokemonTypeId}}</span>
+                    <img class="card-img-top" src="{{sprites.front_default}}" alt="Pokemon"
+                         onmouseover= "this.src='{{sprites.back_default}}'" onmouseout= "this.src='{{sprites.front_default}}'""/>
+                    <span class="badge badge-primary">Id : {{id}}</span>
+                    <span class="badge badge-primary">Name : {{name}}</span>
                     <span class="badge badge-primary">Level : {{level}}</span>
+
+
                 </div>
-                {{/team}}
+                {{/teamType}}
             </div>
         </div>
         {{/trainerSolo}}

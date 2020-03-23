@@ -26,15 +26,16 @@ public class RestConfiguration {
         return new RestTemplate();
     }
 
-    /*
+
     @Autowired
-    public void configureLocalInterceptor (RestTemplate rt){
-        rt.setInterceptors(List.of((httpRequest, bytes, clientHttpRequestExecution) -> {
+    public void configureLocalInterceptor (){
+        RestTemplate r = this.restTemplate();
+        r.setInterceptors(List.of((httpRequest, bytes, clientHttpRequestExecution) -> {
             httpRequest.getHeaders().add(HttpHeaders.ACCEPT_LANGUAGE, LocaleContextHolder.getLocale().toLanguageTag());
             return clientHttpRequestExecution.execute(httpRequest,bytes);
         }));
     }
-*/
+
     @Bean
     RestTemplate trainerApiRestTemplate() {
         RestTemplate r = this.restTemplate();

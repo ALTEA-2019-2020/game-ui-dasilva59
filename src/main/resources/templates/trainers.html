@@ -1,10 +1,10 @@
-{{> layout/header}}
+{{> layout/navbar}}
 
 <body>
 
 <div class="container">
-    <h1 class="pt-md-5 pb-md-5">Trainers/h1>
-
+    <h1 class="pt-md-5 pb-md-5">Trainers</h1>
+    <div></div>
     <div class="card-deck">
         {{#trainer}}
         <div class="col-md-3">
@@ -15,12 +15,17 @@
                         <a href="trainers/{{name}}" class="btn btn-primary">Voir</a>
                     </h4>
                 </div>
-                {{#team}}
+                {{#teamType}}
                 <div class="card-body">
-                    <span class="badge badge-primary">Id : {{pokemonTypeId}}</span>
+                    <img class="card-img-top" src="{{sprites.front_default}}" alt="Pokemon"
+                         onmouseover= "this.src='{{sprites.back_default}}'" onmouseout= "this.src='{{sprites.front_default}}'""/>
+                    <span class="badge badge-primary">Id : {{id}}</span>
+                    <span class="badge badge-primary">Name : {{name}}</span>
                     <span class="badge badge-primary">Level : {{level}}</span>
+
+
                 </div>
-                {{/team}}
+                {{/teamType}}
             </div>
         </div>
         {{/trainer}}

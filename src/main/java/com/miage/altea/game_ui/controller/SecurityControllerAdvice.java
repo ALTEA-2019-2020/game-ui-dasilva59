@@ -6,9 +6,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import javax.validation.executable.ValidateOnExecution;
-import java.security.Principal;
-
 @ControllerAdvice
 public class SecurityControllerAdvice {
 
